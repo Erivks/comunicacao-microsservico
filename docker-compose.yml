@@ -10,6 +10,13 @@ services:
       - POSTGRES_PASSWORD=123456
     ports:
       - 5432:5432
+  auth-api:
+    build: './auth-api'
+    container_name: auth-api
+    environment:
+      - PORT=8080
+    ports:
+      - 8080:8080
   product-db:
     image: postgres:11
     container_name: product-db
@@ -29,6 +36,13 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=123456
     ports:
       - 27017:27017
+  sales-api:
+    build: './sales-api'
+    container_name: sales-api
+    environment:
+      - PORT=8081
+    ports:
+      - 8081:8081
   sales_rabbit:
     image: rabbitmq:3-management
     container_name: sales_rabbit
